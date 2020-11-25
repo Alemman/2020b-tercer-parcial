@@ -1,14 +1,20 @@
 package oop.exams.generator;
 
-import oop.exams.model.Region;
+import oop.exams.model.*;
 
 public class LicensePlateGeneratorFactory {
+
+    /*private final LicensePlateGenerator northLicensePlateGenerator = new NorthLicensePlateGenerator();
+    private final LicensePlateGenerator southLicensePlateGenerator = new SouthLicensePlateGenerator();
+    private final LicensePlateGenerator eastLicensePlateGenerator = new EastLicensePlateGenerator();
+    private final LicensePlateGenerator westLicensePlateGenerator = new WestLicensePlateGenerator();
+    private final LicensePlateGenerator centerLicensePlateGenerator = new CenterLicensePlateGenerator();*/
 
     private final LicensePlateGenerator northLicensePlateGenerator = new NorthLicensePlateGenerator();
     private final LicensePlateGenerator southLicensePlateGenerator = new SouthLicensePlateGenerator();
     private final LicensePlateGenerator eastLicensePlateGenerator = new EastLicensePlateGenerator();
     private final LicensePlateGenerator westLicensePlateGenerator = new WestLicensePlateGenerator();
-    private final LicensePlateGenerator centerLicensePlateGenerator = new CenterLicensePlateGenerator();
+    private final LicensePlateGenerator centerLicensePlateGenerator = new DefaultLicensePlateGenerator();
 
     public LicensePlateGenerator getInstance(String state) {
         return switch (state) {
@@ -19,7 +25,7 @@ public class LicensePlateGeneratorFactory {
             default -> centerLicensePlateGenerator;
         };
     }
-
+//falta uni test
     public LicensePlateGenerator getInstance(Region region) {
         return switch (region) {
             case NORTH -> northLicensePlateGenerator;
